@@ -66,31 +66,3 @@ imagesc(x(x_ind),x(x_ind),mask_m5kp10(x_ind,x_ind));
 xlabel('microns','fontsize',14);
 ylabel('microns','fontsize',14);
 title('Kinoform Mask for J_5, \lambda = 800 nm, \gamma = 1^o','fontsize',14);
-
-%% other shit
-dx = x(6001)-x(6000);
-
-y = mask_m4kp05(6000,:);
-z = diff(y);
-d = find(z==1);
-e = diff(d);
-mean(e)*dx
-
-y = mask_m4kp10(6000,:);
-z = diff(y);
-d = find(z==1);
-e = diff(d);
-mean(e)*dx
-
-y = mask_m5kp05(6000,:);
-z = diff(y);
-d = find(z==1);
-e = diff(d);
-mean(e)*dx
-
-y = mask_m5kp10(6000,:);
-z = diff(y);
-d = find(z==1);
-e = diff(d);
-mean(e)*dx
-
