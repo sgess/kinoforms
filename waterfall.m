@@ -35,12 +35,12 @@ smooth_env = gauss_env.*mask_env;
 
 % initialize phase term
 PSI_axi = kp_300*r;
-u_axi = laser_I0*smooth_env.*exp(-1i*PSI_axi);
+%u_axi = laser_I0*smooth_env.*exp(-1i*PSI_axi);
 
 % initialize mask phase
-%mask_axi = false(n_pts);
-%mask_axi(rem(PSI_axi,2*pi) > pi) = true;
-%u_axi = smooth_env.*exp(-1i*mask_axi);
+mask_axi = zeros(n_pts);
+mask_axi(rem(PSI_axi,2*pi) > pi) = pi;
+u_axi = laser_I0*smooth_env.*exp(-1i*mask_axi);
 
 % loop over z
 z = linspace(z_start,z_end,n_z);
@@ -65,10 +65,10 @@ figure(1);
 pcolor(z/1e6,x/1e3,water); shading flat; colormap hot; h = colorbar; caxis([0 3e12]);
 xlabel('Z [m]','fontsize',16); ylabel('X [mm]','fontsize',16); 
 ylabel(h,'I [W/cm^2]','fontsize',16); title('Laser Intensity','fontsize',16);
-set(gca,'fontsize',16); set(gcf,'color','w'); saveas(gcf,'axicon_2d_hr2.eps','epsc');
+set(gca,'fontsize',16); set(gcf,'color','w'); saveas(gcf,'kino_2d_hr2.eps','epsc');
 
 figure(2);
 plot(z/1e6,water(n_pts/2+1,:),'linewidth',2);
 xlabel('Z [m]','fontsize',16); ylabel('I [W/cm^2]','fontsize',16);
 title('On-Axis Laser Intensity','fontsize',16);
-set(gca,'fontsize',16); set(gcf,'color','w'); saveas(gcf,'axicon_1d_hr2.eps','epsc');
+set(gca,'fontsize',16); set(gcf,'color','w'); saveas(gcf,'kino_1d_hr2.eps','epsc');
