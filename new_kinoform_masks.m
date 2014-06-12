@@ -2,7 +2,7 @@
 
 n_pts  = 12000;  % number of pixels
 r_mask = 20000;  % radius of mask in microns
-lambda = 0.800; % wavelength in microns
+lambda = 0.800;  % wavelength in microns
 gma_300 = 0.312;   % angle of focused rays with respect to axis in degrees
 gma_400 = 0.273;   % angle of focused rays with respect to axis in degrees
 gma_500 = 0.250;   % angle of focused rays with respect to axis in degrees
